@@ -50,4 +50,6 @@ def multipleInteligence(args):
     predict = model.predict([[linguistica, logicoMatematico, espacial,
                             corporal, musical, interpessoal, intrapessoal, naturalista]])
 
+    return predict[0]
+
 
