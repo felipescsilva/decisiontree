@@ -1,5 +1,6 @@
 import logging
 import urllib.request
+import json
 from pickle import load
 
 import azure.functions as func
@@ -19,7 +20,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
     if args:
-        return func.HttpResponse(multipleInteligence(args))
+        profession = dict(first_profession = multipleInteligence(args))
+        print(profession)
+        return func.HttpResponse(json.dumps(profession),
+                                 mimetype="application/json")
     else:
         return func.HttpResponse(
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
